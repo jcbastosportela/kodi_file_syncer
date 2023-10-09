@@ -1,0 +1,4 @@
+[tool.ruff]
+exclude = [".venv"]
+fix = true
+line-length = 120
