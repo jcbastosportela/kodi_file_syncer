@@ -1,14 +1,21 @@
 import xbmc
 import xbmcaddon
 
-addon       = xbmcaddon.Addon()
-addonname   = addon.getAddonInfo('name')
+_addon = xbmcaddon.Addon()
+_addonname = _addon.getAddonInfo('name')
+
 
 def info(msg):
-    xbmc.log(f'{addonname} - {msg}' , level=xbmc.LOGINFO)
+    xbmc.log(f'{_addonname} - {msg}', level=xbmc.LOGINFO)
+
+
 def debug(msg):
-    xbmc.log(f'{addonname} - {msg}' , level=xbmc.LOGDEBUG)
+    xbmc.log(f'{_addonname} - {msg}', level=xbmc.LOGDEBUG)
+
+
 def error(msg):
-    xbmc.log(f'{addonname} - {msg}' , level=xbmc.LOGERROR)
+    xbmc.log(f'{_addonname} - {msg}', level=xbmc.LOGERROR)
+
+
 def warn(msg):
-    xbmc.log(f'{addonname} - {msg}' , level=xbmc.LOGWARNING)
+    xbmc.log(f'{_addonname} - {msg}', level=xbmc.LOGWARNING)

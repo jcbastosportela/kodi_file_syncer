@@ -5,12 +5,9 @@ __license__ = "GPL"
 __version__ = "0.0.2"
 __email__ = "jcbastosportela@gmail.com"
 
-import settings
-from settings import Settings, SettingsIds
+from settings import SettingsIds
 import xbmcaddon
-import json
-from utils import *
-from functools import partial
+from utils import info
 
 
 addon = xbmcaddon.Addon()
@@ -24,8 +21,6 @@ def main():
         info('First time launch')
         addon.openSettings()
         addon.setSettingBool(SettingsIds.FIRST_TIME.name, False)
-
-    settings.save(Settings(addon.getSettingString(SettingsIds.MOUNT_POINT.name)))
 
 
 if __name__ == '__main__':

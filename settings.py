@@ -1,10 +1,7 @@
 import enum
-import json
-from utils import *
+from utils import warn
 from dataclasses import dataclass
-
-
-FILE_NAME = 'settings.json'
+import xbmcaddon
 
 
 class SettingsIds(enum.Enum):
@@ -13,33 +10,25 @@ class SettingsIds(enum.Enum):
     DELETE_REMOTE = enum.auto()
 
 
-
 @dataclass
 class Settings:
-    MOUNT_POINT:str = '/mnt/rpi1/'
-    DELETE_REMOTE:bool = False
+    MOUNT_POINT: str = '/mnt/rpi1/'
+    DELETE_REMOTE: bool = False
 
 
-def save(settings:Settings)->None:
-    """Saves the settings
-
-    Args:
-        settings (Settings): Settings to save in the json file
-    """
-    with open(FILE_NAME, 'w') as f:
-        json.dump(settings, f, indent=4)
-
-def load()->Settings:
+def load() -> Settings:
     """Loads settings
 
     Returns:
         Settings: Loaded settings
     """
+    addon = xbmcaddon.Addon()
     s = Settings()
     try:
-        with open(FILE_NAME, 'r') as f:
-            settings_dic = json.load(f)
-        s = Settings(settings_dic[SettingsIds.MOUNT_POINT.name])
-    except Exception as ex:
+        s = Settings(
+            addon.getSetting(SettingsIds.MOUNT_POINT.name),
+            addon.getSettingBool(SettingsIds.DELETE_REMOTE.name)
+        )
+    except Exception:
         warn("Couldn't load settings. Using defaults")
     return s

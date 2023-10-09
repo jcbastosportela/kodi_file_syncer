@@ -9,8 +9,7 @@ import time
 import xbmc
 import xbmcgui
 import settings
-from settings import SettingsIds, Settings
-from utils import *
+from utils import info
 import subprocess
 import os
 
@@ -65,7 +64,7 @@ def _sync_and_clean(remote:str, local:str,delete_remote:bool)->None:
             dialog.notification(f'Failed rsync {process.returncode}', stderr, icon='warning', time=5000)  # 5000 milliseconds (5 seconds)
     except Exception as ex:
         dialog = xbmcgui.Dialog()
-        dialog.notification(f'Failed rsync', ex, icon='warning', time=5000)  # 5000 milliseconds (5 seconds)
+        dialog.notification('Failed rsync', ex, icon='warning', time=5000)  # 5000 milliseconds (5 seconds)
 
 
 if __name__ == '__main__':
