@@ -20,3 +20,7 @@ msgstr ""
 msgctxt "#30001"
 msgid "Mount point"
 msgstr ""
+
+msgctxt "#30002"
+msgid "Delete synced files from remote?"
+msgstr ""
