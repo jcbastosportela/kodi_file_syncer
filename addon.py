@@ -21,6 +21,7 @@ def main():
         info('First time launch')
         addon.openSettings()
         addon.setSettingBool(SettingsIds.FIRST_TIME.name, False)
+        addon.setSettingBool(SettingsIds.MOVE_REMOTE.name, True)
 
 
 if __name__ == '__main__':

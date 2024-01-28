@@ -4,5 +4,6 @@
         <setting label=""      type="bool"     		id="FIRST_TIME"           visible="false" default="true"/>
         <setting label="30001" type="text"     		id="MOUNT_POINT"          default="/mnt/rpi1/"/>
         <setting label="30002" type="bool"     		id="DELETE_REMOTE"        default="false"/>
+        <setting label="30003" type="bool"     		id="MOVE_REMOTE"          default="true"/>
 	</category>
 </settings>

@@ -14,6 +14,7 @@ class SettingsIds(enum.Enum):
 class Settings:
     MOUNT_POINT: str = '/mnt/rpi1/'
     DELETE_REMOTE: bool = False
+    MOVE_REMOTE: bool = True
 
 
 def load() -> Settings:
@@ -27,7 +28,8 @@ def load() -> Settings:
     try:
         s = Settings(
             addon.getSetting(SettingsIds.MOUNT_POINT.name),
-            addon.getSettingBool(SettingsIds.DELETE_REMOTE.name)
+            addon.getSettingBool(SettingsIds.DELETE_REMOTE.name),
+            addon.getSettingBool(SettingsIds.MOVE_REMOTE.name)
         )
     except Exception:
         warn("Couldn't load settings. Using defaults")

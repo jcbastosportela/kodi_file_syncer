@@ -24,3 +24,7 @@ msgstr ""
 msgctxt "#30002"
 msgid "Delete synced files from remote?"
 msgstr ""
+
+msgctxt "#30003"
+msgid "Move remote files after sync?"
+msgstr ""

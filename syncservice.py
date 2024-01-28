@@ -24,13 +24,14 @@ RSYNC_INGORE_LINES = [
 ]
 
 
-def _sync_and_clean(remote: str, local: str, delete_remote: bool) -> None:
+def _sync_and_clean(remote: str, local: str, delete_remote: bool, remote_copied: str|None) -> None:
     """Sync remote files
 
     Args:
         remote (str): Sync from
         local (str): Sync to
         delete_remote (bool): if \c True will remove files from remote path
+        remote_copied (str|None): remote path where to move all copied files 
     """
     try:
         command = ["rsync", "-avz", "--omit-dir-times", "--no-perms",
@@ -63,6 +64,9 @@ def _sync_and_clean(remote: str, local: str, delete_remote: bool) -> None:
                 if delete_remote:
                     ret = subprocess.run(f'rm -rf {remote}/*', shell=True)
                     info(ret)
+                elif remote_copied:
+                    ret = subprocess.run(f'mv {remote}/* {remote_copied}/', shell=True)
+                    info(ret)
         else:
             dialog = xbmcgui.Dialog()
             # 5000 milliseconds (5 seconds)
@@ -81,15 +85,19 @@ if __name__ == '__main__':
     info(f"The server address is {s.MOUNT_POINT}")
     remote_movies_path = os.path.abspath(
         os.path.join(s.MOUNT_POINT, 'movies/'))
+    remote_copied_movies_path = os.path.abspath(
+        os.path.join(s.MOUNT_POINT, 'copied_movies/')) if s.MOVE_REMOTE else None
     local_movies_path = os.path.abspath('/media/Portela/movies/')
     remote_series_path = os.path.abspath(
         os.path.join(s.MOUNT_POINT, 'series/'))
+    remote_copied_series_path = os.path.abspath(
+        os.path.join(s.MOUNT_POINT, 'copied_series/')) if s.MOVE_REMOTE else None
     local_series_path = os.path.abspath('/media/Portela/series/')
 
     while not monitor.abortRequested():
         info("Going to rsync %s" % time.time())
-        _sync_and_clean(remote_movies_path, local_movies_path, s.DELETE_REMOTE)
-        _sync_and_clean(remote_series_path, local_series_path, s.DELETE_REMOTE)
+        _sync_and_clean(remote_movies_path, local_movies_path, s.DELETE_REMOTE, remote_copied_movies_path)
+        _sync_and_clean(remote_series_path, local_series_path, s.DELETE_REMOTE, remote_copied_series_path)
         info('Done rsyncing')
 
         # Sleep/wait for abort for CHECK_PERDIOD seconds
