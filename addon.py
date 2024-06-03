@@ -2,7 +2,7 @@
 __author__ = "Joao Carlos Bastos Portela"
 __copyright__ = "left"
 __license__ = "GPL"
-__version__ = "0.0.2"
+__version__ = "0.0.4"
 __email__ = "jcbastosportela@gmail.com"
 
 from settings import SettingsIds

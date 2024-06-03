@@ -13,12 +13,12 @@ msgstr ""
 "Language: en\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgctxt "#30005"
+msgctxt "#30000"
 msgid "General"
 msgstr ""
 
 msgctxt "#30001"
-msgid "Mount point"
+msgid "Mount point for series"
 msgstr ""
 
 msgctxt "#30002"
@@ -27,4 +27,16 @@ msgstr ""
 
 msgctxt "#30003"
 msgid "Move remote files after sync?"
+msgstr ""
+
+msgctxt "#30004"
+msgid "Mount point for movies"
+msgstr ""
+
+msgctxt "#30005"
+msgid "Destination for series"
+msgstr ""
+
+msgctxt "#30006"
+msgid "Destination for movies"
 msgstr ""

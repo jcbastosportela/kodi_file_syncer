@@ -1,3 +1,4 @@
 0.0.1 It works!
 0.0.2 BugFix
 0.0.3 added move after sync option
+0.0.4 Separated series and movies settings

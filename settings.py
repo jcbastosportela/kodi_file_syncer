@@ -6,15 +6,22 @@ import xbmcaddon
 
 class SettingsIds(enum.Enum):
     FIRST_TIME = enum.auto()
-    MOUNT_POINT = enum.auto()
+    SERIES_MOUNT_POINT = enum.auto()
+    MOVIES_MOUNT_POINT = enum.auto()
+    SERIES_DEST = enum.auto()
+    MOVIES_DEST = enum.auto()
     DELETE_REMOTE = enum.auto()
+    MOVE_REMOTE = enum.auto()
 
 
 @dataclass
 class Settings:
-    MOUNT_POINT: str = '/mnt/rpi1/'
-    DELETE_REMOTE: bool = False
-    MOVE_REMOTE: bool = True
+    SERIES_MOUNT_POINT:str = "/mnt/rpi1/series"
+    MOVIES_MOUNT_POINT:str = "/mnt/rpi1/movies"
+    SERIES_DEST:str = "/media/Portela/series"
+    MOVIES_DEST:str = "/media/Seagate/movies"
+    DELETE_REMOTE:str = False
+    MOVE_REMOTE:str = True
 
 
 def load() -> Settings:
@@ -27,7 +34,10 @@ def load() -> Settings:
     s = Settings()
     try:
         s = Settings(
-            addon.getSetting(SettingsIds.MOUNT_POINT.name),
+            addon.getSetting(SettingsIds.SERIES_MOUNT_POINT.name),
+            addon.getSetting(SettingsIds.MOVIES_MOUNT_POINT.name),
+            addon.getSetting(SettingsIds.SERIES_DEST.name),
+            addon.getSetting(SettingsIds.MOVIES_DEST.name),
             addon.getSettingBool(SettingsIds.DELETE_REMOTE.name),
             addon.getSettingBool(SettingsIds.MOVE_REMOTE.name)
         )

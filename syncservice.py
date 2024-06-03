@@ -2,7 +2,7 @@
 __author__ = "Joao Carlos Bastos Portela"
 __copyright__ = "left"
 __license__ = "GPL"
-__version__ = "0.0.2"
+__version__ = "0.0.4"
 __email__ = "jcbastosportela@gmail.com"
 
 import time
@@ -82,17 +82,17 @@ if __name__ == '__main__':
     monitor = xbmc.Monitor()
 
     s = settings.load()
-    info(f"The server address is {s.MOUNT_POINT}")
-    remote_movies_path = os.path.abspath(
-        os.path.join(s.MOUNT_POINT, 'movies/'))
+    info(f"The movies source is {s.MOVIES_MOUNT_POINT}")
+    remote_movies_path = os.path.abspath(s.MOVIES_MOUNT_POINT)
     remote_copied_movies_path = os.path.abspath(
-        os.path.join(s.MOUNT_POINT, 'copied_movies/')) if s.MOVE_REMOTE else None
-    local_movies_path = os.path.abspath('/media/Portela/movies/')
-    remote_series_path = os.path.abspath(
-        os.path.join(s.MOUNT_POINT, 'series/'))
+        os.path.join(s.MOVIES_MOUNT_POINT, '../copied_movies/')) if s.MOVE_REMOTE else None
+    local_movies_path = os.path.abspath(s.MOVIES_DEST)
+
+    info(f"The series source is {s.MOVIES_MOUNT_POINT}")
+    remote_series_path = os.path.abspath(s.SERIES_MOUNT_POINT)
     remote_copied_series_path = os.path.abspath(
-        os.path.join(s.MOUNT_POINT, 'copied_series/')) if s.MOVE_REMOTE else None
-    local_series_path = os.path.abspath('/media/Portela/series/')
+        os.path.join(s.SERIES_MOUNT_POINT, '../copied_series/')) if s.MOVE_REMOTE else None
+    local_series_path = os.path.abspath(s.SERIES_DEST)
 
     while not monitor.abortRequested():
         info("Going to rsync %s" % time.time())

@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <settings>
-	<category label="30005">
+	<category label="30000">
         <setting label=""      type="bool"     		id="FIRST_TIME"           visible="false" default="true"/>
-        <setting label="30001" type="text"     		id="MOUNT_POINT"          default="/mnt/rpi1/"/>
-        <setting label="30002" type="bool"     		id="DELETE_REMOTE"        default="false"/>
-        <setting label="30003" type="bool"     		id="MOVE_REMOTE"          default="true"/>
+        <setting label="30001" type="text"     		id="SERIES_MOUNT_POINT"   default="/mnt/rpi1/series"/>
+        <setting label="30002" type="text"     		id="MOVIES_MOUNT_POINT"   default="/mnt/rpi1/movies"/>
+        <setting label="30003" type="text"     		id="SERIES_DEST"          default="/media/Portela/series"/>
+        <setting label="30004" type="text"     		id="MOVIES_DEST"          default="/media/Seagate/movies"/>
+        <setting label="30005" type="bool"     		id="DELETE_REMOTE"        default="false"/>
+        <setting label="30006" type="bool"     		id="MOVE_REMOTE"          default="true"/>
 	</category>
 </settings>
